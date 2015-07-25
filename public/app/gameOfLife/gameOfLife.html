@@ -5,9 +5,9 @@
 </div>
 
 <div class="text-center">
-    <div ng-repeat="x in vm.getNumber(vm.width) track by $index">
-        <span ng-repeat="y in vm.getNumber(vm.height) track by $index">
-            {{$index}}
+    <div ng-repeat="row in vm.board track by $index">
+        <span ng-repeat="cell in row track by $index">
+            {{cell}}
         </span>
     </div>
 </div>

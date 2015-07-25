@@ -10,11 +10,31 @@
         var vm = this;
         vm.width = 30;
         vm.height = 30;
-        vm.running = false;
+        vm.generation = 0;
+        vm.board = [];
 
-        //Refactor out later
-        vm.getNumber = function(num) {
-            return new Array(num);
+        activate();
+
+        ////////////////
+
+        function activate() {
+            createBoard();
+        }
+
+        function createBoard(){
+            var array = [];
+
+            for (var i = 0; i < vm.width; i++){
+                array.push([]);
+
+                array[i].push(new Array(vm.height));
+
+                for(var j = 0; j< vm.height; j++) {
+                    array[i][j] = 0;
+                }
+            }
+
+            vm.board = array;
         }
     }
 })();

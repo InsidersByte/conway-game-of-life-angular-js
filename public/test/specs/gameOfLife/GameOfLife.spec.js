@@ -6,12 +6,17 @@
 
     describe("app.gameOfLife", function () {
         describe("GameOfLife controller", function () {
+            var MathMock;
             var controller;
 
             var width = 30;
             var height = 30;
 
-            beforeEach(module('app'));
+            beforeEach(module('app', function ($provide) {
+                MathMock = jasmine.createSpyObj('Math', ['random']);
+
+                $provide.constant('Math', MathMock);
+            }));
 
             beforeEach(inject(function ($controller) {
                 controller = $controller('GameOfLife');
@@ -35,19 +40,50 @@
                 });
 
                 it('should initialise the board', function () {
-                    expect(controller.board).toBeDefined();
+                    checkBoard(false);
+                });
 
-                    expect(controller.board.length).toBe(height);
+                it('should have start method defined', function () {
+                    expect(controller.start).toBeDefined();
+                });
+            });
 
-                    controller.board.forEach(function (row) {
-                        expect(row.length).toBe(width);
+            describe('Start', function () {
+                describe('Math random return false', function () {
+                    it('should seed the board with false', function () {
+                        MathMock.random.and.returnValue(0.1);
 
-                        row.forEach(function (cell) {
-                            expect(cell).toBe(0);
-                        });
+                        controller.start();
+
+                        checkBoard(false);
+                    });
+                });
+
+                describe('Math random return true', function () {
+
+                    it('should seed the board with true', function () {
+                        MathMock.random.and.returnValue(0.6);
+
+                        controller.start();
+
+                        checkBoard(true);
                     });
                 });
             });
+
+            function checkBoard(value) {
+                expect(controller.board).toBeDefined();
+
+                expect(controller.board.length).toBe(height);
+
+                controller.board.forEach(function (row) {
+                    expect(row.length).toBe(width);
+
+                    row.forEach(function (cell) {
+                        expect(cell).toBe(value);
+                    });
+                });
+            }
         });
     });
 })();

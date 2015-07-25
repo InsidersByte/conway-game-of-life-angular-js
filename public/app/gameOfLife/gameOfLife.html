@@ -4,8 +4,10 @@
     <button class="btn btn-default">Stop</button>
 </div>
 
-<div ng-repeat="x in vm.getNumber(vm.width) track by $index">
-    <span ng-repeat="y in vm.getNumber(vm.height) track by $index">
-        {{$index}}
-    </span>
+<div class="text-center">
+    <div ng-repeat="x in vm.getNumber(vm.width) track by $index">
+        <span ng-repeat="y in vm.getNumber(vm.height) track by $index">
+            {{$index}}
+        </span>
+    </div>
 </div>

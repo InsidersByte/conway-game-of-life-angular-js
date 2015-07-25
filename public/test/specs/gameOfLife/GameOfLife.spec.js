@@ -6,24 +6,26 @@
 
     describe("app.gameOfLife", function () {
         describe("GameOfLife controller", function () {
-            var MathMock, $intervalMock, _Mock;
+            var randomBooleanGeneratorMock, $intervalMock, _Mock;
             var controller;
 
             var width = 30;
             var height = 30;
             var interval = 300;
+            var randomlyGeneratedBool = true;
 
             beforeEach(module('app'));
 
             beforeEach(inject(function ($controller, $interval) {
-                MathMock = jasmine.createSpyObj('Math', ['random']);
+                randomBooleanGeneratorMock = jasmine.createSpyObj('randomBooleanGenerator', ['generateRandomBoolean']);
+                randomBooleanGeneratorMock.generateRandomBoolean.and.returnValue(randomlyGeneratedBool);
 
                 $intervalMock = jasmine.createSpy('$interval');
 
                 _Mock = jasmine.createSpyObj("_", ['filter']);
 
                 controller = $controller('GameOfLife', {
-                    Math: MathMock,
+                    randomBooleanGenerator: randomBooleanGeneratorMock,
                     $interval: $intervalMock,
                     _: _Mock
                 });
@@ -64,27 +66,12 @@
             });
 
             describe('Start', function () {
-                describe('Math random return false', function () {
-                    it('should seed the board with false', function () {
-                        MathMock.random.and.returnValue(0.1);
+                it('should seed the board with randomly generated boolean', function () {
+                    controller.start();
 
-                        controller.start();
+                    checkBoard(randomlyGeneratedBool);
 
-                        checkBoard(false);
-                        expect($intervalMock).toHaveBeenCalledWith(jasmine.any(Function), interval);
-                    });
-                });
-
-                describe('Math random return true', function () {
-
-                    it('should seed the board with true', function () {
-                        MathMock.random.and.returnValue(0.6);
-
-                        controller.start();
-
-                        checkBoard(true);
-                        expect($intervalMock).toHaveBeenCalledWith(jasmine.any(Function), 300);
-                    });
+                    expect($intervalMock).toHaveBeenCalledWith(jasmine.any(Function), interval);
                 });
             });
 
@@ -93,7 +80,7 @@
                     $intervalMock = jasmine.createSpyObj('$interval', ['cancel']);
 
                     controller = $controller('GameOfLife', {
-                        Math: MathMock,
+                        randomBooleanGenerator: randomBooleanGeneratorMock,
                         $interval: $intervalMock,
                         _: _Mock
                     });

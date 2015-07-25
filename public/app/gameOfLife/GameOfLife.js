@@ -6,9 +6,9 @@
         .module('app.gameOfLife')
         .controller('GameOfLife', GameOfLife);
 
-    GameOfLife.$inject = ["Math", "$interval", "_"];
+    GameOfLife.$inject = ["randomBooleanGenerator", "$interval", "_"];
 
-    function GameOfLife(Math, $interval, _) {
+    function GameOfLife(randomBooleanGenerator, $interval, _) {
         var vm = this;
         vm.width = 30;
         vm.height = 30;
@@ -57,13 +57,9 @@
         function seedBoard() {
             for (var y = 0; y < vm.height; y++) {
                 for (var x = 0; x < vm.width; x++) {
-                    vm.board[y][x] = generateRandomBoolean();
+                    vm.board[y][x] = randomBooleanGenerator.generateRandomBoolean();
                 }
             }
-        }
-
-        function generateRandomBoolean() {
-            return Math.random() > .5;
         }
 
         //refactor out for easier testing

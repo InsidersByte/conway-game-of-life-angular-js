@@ -12,7 +12,8 @@
         /*
          * Our reusable cross app code modules
          */
-        'blocks.router'
+        'blocks.router',
+        'blocks.randomBooleanGenerator'
         /*
          * 3rd Party modules
          */

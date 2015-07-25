@@ -17,10 +17,11 @@
          * We could place these under every feature area,
          * but this is easier to maintain.
          */
-        "app.core"
+        "app.core",
 
         /*
          * Feature areas
          */
+        "app.gameOfLife"
     ]);
 })();

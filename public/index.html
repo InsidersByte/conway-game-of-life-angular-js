@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Conway's Game of Life</title>
     <link rel="stylesheet" href="vendor/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
     <base href="/">
 </head>
 <body ng-app="app">
     <div ng-include="'app/layout/navbar.html'">
     </div>
+
+    <div ui-view></div>
 
     <script type="text/javascript" src="vendor/angular.js"></script>
     <script type="text/javascript" src="vendor/angular-ui-router.js"></script>
@@ -19,5 +22,8 @@
 
     <script type="text/javascript" src="app/blocks/router/router.module.js"></script>
     <script type="text/javascript" src="app/blocks/router/routerHelper.js"></script>
+
+    <script type="text/javascript" src="app/gameOfLife/gameOfLife.module.js"></script>
+    <script type="text/javascript" src="app/gameOfLife/gameOfLife.routes.js"></script>
 </body>
 </html>

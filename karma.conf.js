@@ -23,8 +23,6 @@ module.exports = function(config) {
         'public/app/**/*.module.js',
         'public/app/**/*.js',
 
-        'public/test/lib/specHelper.js',
-
         'public/test/specs/**/*.spec.js'
     ],
 

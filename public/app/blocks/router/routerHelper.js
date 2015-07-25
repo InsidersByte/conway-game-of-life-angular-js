@@ -15,15 +15,11 @@
 
         $locationProvider.html5Mode(true);
 
-        RouterHelper.$inject = ['$state', '$rootScope'];
-
         function RouterHelper() {
             var hasOtherwise = false;
             var service = {
                 configureStates: configureStates
             };
-
-            init();
 
             return service;
 

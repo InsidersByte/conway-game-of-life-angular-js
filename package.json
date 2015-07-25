@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "postintall": "bower install",
+
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1"
+    "start": "http-server -a localhost -p 8000 -c-1",
+
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
@@ -31,7 +36,14 @@
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "http-server": "^0.8.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
     "main-bower-files": "^2.9.0",
-    "path": "^0.11.14"
+    "path": "^0.11.14",
+    "phantomjs": "^1.9.17"
   }
 }

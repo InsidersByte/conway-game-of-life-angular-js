@@ -4,6 +4,7 @@
   "description": "Conway's Game of Life written in AngularJS",
   "main": "index.js",
   "scripts": {
+    "postintall": "bower install",
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1"
   },
@@ -26,6 +27,11 @@
   },
   "homepage": "https://github.com/InsidersByte/conway-game-of-life-angular-js#readme",
   "devDependencies": {
-    "http-server": "^0.8.0"
+    "bower": "^1.4.1",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "http-server": "^0.8.0",
+    "main-bower-files": "^2.9.0",
+    "path": "^0.11.14"
   }
 }

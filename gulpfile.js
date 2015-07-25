@@ -7,7 +7,7 @@ var path = require("path"),
     mainBowerFiles = require("main-bower-files");
 
 gulp.task("clean", function (cb) {
-    del(["./app/vendor/**", "!./app/vendor"], cb);
+    del(["./public/vendor/**", "!./public/vendor"], cb);
 });
 
 gulp.task("copy-bower-components", ["clean"], function () {
@@ -17,7 +17,7 @@ gulp.task("copy-bower-components", ["clean"], function () {
             bowerJson: "./bower.json"
         }
     }))
-    .pipe(gulp.dest("./app/vendor"));
+    .pipe(gulp.dest("./public/vendor"));
 });
 
 gulp.task("default", ["copy-bower-components"]);

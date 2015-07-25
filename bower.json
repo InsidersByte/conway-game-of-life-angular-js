@@ -24,9 +24,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.3"
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5"
   },
-  "overrides":{
+  "overrides": {
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.css"

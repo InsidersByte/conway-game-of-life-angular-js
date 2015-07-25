@@ -6,5 +6,6 @@
 
     angular
         .module('app.core')
-        .constant('Math', Math);
+        .constant('Math', Math)
+        .constant('_', _);
 })();

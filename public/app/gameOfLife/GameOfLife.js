@@ -6,15 +6,17 @@
         .module('app.gameOfLife')
         .controller('GameOfLife', GameOfLife);
 
-    GameOfLife.$inject = ["Math"];
+    GameOfLife.$inject = ["Math", "$interval", "_"];
 
-    function GameOfLife(Math) {
+    function GameOfLife(Math, $interval, _) {
         var vm = this;
         vm.width = 30;
         vm.height = 30;
-        vm.generation = 0;
         vm.board = [];
+        vm.interval = 300;
+        vm.timer = null;
         vm.start = start;
+        vm.stop = stop;
 
         activate();
 
@@ -27,33 +29,91 @@
         function createBoard() {
             var array = [];
 
-            for (var i = 0; i < vm.width; i++) {
+            for (var y = 0; y < vm.width; y++) {
                 array.push([]);
 
-                array[i].push(new Array(vm.height));
+                array[y].push(new Array(vm.height));
 
-                for (var j = 0; j < vm.height; j++) {
-                    array[i][j] = false;
+                for (var x = 0; x < vm.height; x++) {
+                    array[y][x] = false;
                 }
             }
 
             vm.board = array;
         }
 
+        function stop(){
+            if (vm.timer !== null){
+                $interval.cancel(vm.timer);
+                vm.timer = null;
+            }
+        }
+
         function start() {
             seedBoard();
+            vm.timer = $interval(updateBoard, vm.interval);
         }
 
         function seedBoard() {
-            for (var i = 0; i < vm.height; i++) {
-                for (var j= 0; j< vm.width; j++){
-                    vm.board[i][j] = generateRandomBoolean();
+            for (var y = 0; y < vm.height; y++) {
+                for (var x = 0; x < vm.width; x++) {
+                    vm.board[y][x] = generateRandomBoolean();
                 }
             }
         }
 
         function generateRandomBoolean() {
             return Math.random() > .5;
+        }
+
+        //refactor out for easier testing
+
+        function updateBoard() {
+            var previousBoard = angular.copy(vm.board);
+
+            for (var y = 0; y < vm.height; y++) {
+                for (var x = 0; x < vm.width; x++) {
+                    vm.board[y][x] = getNewCellState(previousBoard, x, y);
+                }
+            }
+        }
+
+        function getNewCellState(board, x, y) {
+            var numberOfNeighbouringAliveCells = getNeighbouringAliveCells(board, x, y);
+
+            var currentState = board[x][y];
+
+            if (!currentState) {
+                return numberOfNeighbouringAliveCells === 3;
+            }
+            else if (currentState) {
+                if (numberOfNeighbouringAliveCells < 2) {
+                    return false;
+                }
+                else if (numberOfNeighbouringAliveCells > 3) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+
+        function getNeighbouringAliveCells(board, x, y) {
+            var previousRow = board[y - 1] || [];
+            var nextRow = board[y + 1] || [];
+
+            var neighbours = [
+                previousRow[x - 1], previousRow[x], previousRow[x + 1],
+                board[y][x - 1], board[y][x + 1],
+                nextRow[x - 1], nextRow[x], nextRow[x + 1]
+            ];
+
+            var activeNeighbours = _.filter(neighbours, function(value){
+                return value;
+            });
+
+            return activeNeighbours.length;
         }
     }
 })();

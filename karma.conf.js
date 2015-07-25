@@ -19,6 +19,8 @@ module.exports = function(config) {
         'public/vendor/angular-ui-router.js',
         'public/vendor/angular-mocks.js',
 
+        'public/vendor/underscore.js',
+
         'public/app/app.module.js',
         'public/app/**/*.module.js',
         'public/app/**/*.js',

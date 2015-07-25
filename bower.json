@@ -1,0 +1,26 @@
+{
+  "name": "conway-game-of-life-angular-js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/InsidersByte/conway-game-of-life-angular-js",
+  "authors": [
+    "Jonathon Kelly <jonathon.kelly@insidersbyte.com>"
+  ],
+  "description": "Conway's Game of Life written in AngularJS",
+  "main": "index.js",
+  "keywords": [
+    "AngularJS",
+    "Angular",
+    "Conway",
+    "Game",
+    "of",
+    "Life"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

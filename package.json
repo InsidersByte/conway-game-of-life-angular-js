@@ -1,0 +1,31 @@
+{
+  "name": "conway-game-of-life-angular-js",
+  "version": "1.0.0",
+  "description": "Conway's Game of Life written in AngularJS",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InsidersByte/conway-game-of-life-angular-js.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "Angular",
+    "Conway",
+    "Game",
+    "of",
+    "Life"
+  ],
+  "author": "Jonathon Kelly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InsidersByte/conway-game-of-life-angular-js/issues"
+  },
+  "homepage": "https://github.com/InsidersByte/conway-game-of-life-angular-js#readme",
+  "devDependencies": {
+    "http-server": "^0.8.0"
+  }
+}

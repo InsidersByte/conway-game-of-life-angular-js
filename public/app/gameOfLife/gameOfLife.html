@@ -4,10 +4,11 @@
     <button class="btn btn-default">Stop</button>
 </div>
 
-<div class="text-center">
-    <div ng-repeat="row in vm.board track by $index">
-        <span ng-repeat="cell in row track by $index">
-            {{cell}}
-        </span>
-    </div>
-</div>
+<table class="table-center">
+    <tbody>
+        <tr ng-repeat="row in vm.board track by $index">
+            <td ng-repeat="cell in row track by $index" class="cell" ng-class="{ alive: cell }">
+            </td>
+        </tr>
+    </tbody>
+</table>

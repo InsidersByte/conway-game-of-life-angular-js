@@ -1,1 +1,11 @@
-<h1>Coming Soon</h1>
+<div class="form-group text-center">
+    <button class="btn btn-primary">Start</button>
+    &nbsp;
+    <button class="btn btn-default">Stop</button>
+</div>
+
+<div ng-repeat="x in vm.getNumber(vm.width) track by $index">
+    <span ng-repeat="y in vm.getNumber(vm.height) track by $index">
+        {{$index}}
+    </span>
+</div>

@@ -19,7 +19,9 @@
             it("should map /gameOfLife state to gameOfLife view template", function () {
                 var state = $state.get('gameOfLife');
 
-                expect(state.templateUrl).toBe('app/gameOfLife/gameOfLife.html');
+                expect(state.templateUrl).toBe('app/gameOfLife/gameOfLife.html')
+                expect(state.controller).toBe('GameOfLife');
+                expect(state.controllerAs).toBe('vm');
             });
         });
     });

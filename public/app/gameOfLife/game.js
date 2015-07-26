@@ -42,6 +42,7 @@
             }
 
             function startNewGame(){
+                stop();
                 seedBoard();
                 createTimer();
             }

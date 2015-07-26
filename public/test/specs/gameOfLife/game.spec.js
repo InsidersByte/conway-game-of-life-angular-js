@@ -93,13 +93,35 @@
 
                     describe('Start', function () {
                         it('should seed the board with randomly generated boolean', function () {
-                            expect($intervalMock).not.toHaveBeenCalled();
-
                             game.startNewGame();
 
                             checkBoard(game.board.squares, width, height, randomlyGeneratedBool);
+                        });
 
-                            expect($intervalMock).toHaveBeenCalledWith(jasmine.any(Function), interval);
+                        describe('currently running', function(){
+                           it('should stop the current timer and start a new one', function(){
+                                game.startNewGame();
+
+                               expect($intervalMock.calls.count()).toBe(1);
+                               expect($intervalCancelMock).not.toHaveBeenCalled();
+
+                               game.startNewGame();
+
+                               expect($intervalMock.calls.count()).toBe(2);
+                               expect($intervalCancelMock).toHaveBeenCalled();
+                           });
+                        });
+
+                        describe('not currently running', function(){
+                            it('should start the timer', function(){
+                                expect($intervalMock).not.toHaveBeenCalled();
+                                expect($intervalCancelMock).not.toHaveBeenCalled();
+
+                                game.startNewGame();
+
+                                expect($intervalMock).toHaveBeenCalledWith(jasmine.any(Function), interval);
+                                expect($intervalCancelMock).not.toHaveBeenCalled();
+                            }) ;
                         });
                     });
 

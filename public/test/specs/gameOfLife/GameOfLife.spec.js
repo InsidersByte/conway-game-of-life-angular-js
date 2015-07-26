@@ -16,7 +16,7 @@
             beforeEach(module('app'));
 
             beforeEach(inject(function ($controller) {
-                gameInstanceMock = jasmine.createSpyObj('gameInstance', ['startNewGame', 'stop']);
+                gameInstanceMock = jasmine.createSpyObj('gameInstance', ['startNewGame', 'stop', 'resume']);
 
                 gameMock = jasmine.createSpyObj('game', ['create']);
                 gameMock.create.and.returnValue(gameInstanceMock);
@@ -47,6 +47,11 @@
                     expect(controller.stop).toBeDefined();
                 });
 
+                it('should have resume method defined', function () {
+                    expect(controller.resume).toBeDefined();
+                });
+
+
                 it('should have created a game', function () {
                     expect(controller.game).toBeDefined();
 
@@ -71,6 +76,16 @@
                     controller.stop();
 
                     expect(gameInstanceMock.stop).toHaveBeenCalled();
+                });
+            });
+
+            describe('resume', function () {
+                it('should call game.resume', function () {
+                    expect(gameInstanceMock.resume).not.toHaveBeenCalled();
+
+                    controller.resume();
+
+                    expect(gameInstanceMock.resume).toHaveBeenCalled();
                 });
             });
         });

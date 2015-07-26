@@ -14,6 +14,7 @@
         vm.height = 30;
         vm.startNewGame = startNewGame;
         vm.stop = stop;
+        vm.resume = resume;
         vm.game = {};
 
         activate();
@@ -34,6 +35,10 @@
 
         function startNewGame() {
             vm.game.startNewGame();
+        }
+
+        function resume (){
+            vm.game.resume();
         }
     }
 })();

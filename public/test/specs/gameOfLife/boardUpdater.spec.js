@@ -5,7 +5,7 @@
     'use strict';
 
     describe("app.gameOfLife", function () {
-        describe("boardCreator factory", function () {
+        describe("boardUpdater factory", function () {
             var squareUpdaterMock;
             var factory;
 

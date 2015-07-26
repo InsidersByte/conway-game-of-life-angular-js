@@ -20,7 +20,7 @@
         function getNewAliveState(board, x, y) {
             var numberOfNeighbouringAliveSquares = neighbouringSquareRetriever.getNeighbouringAliveSquares(board, x, y);
 
-            var currentState = board.squares[x][y];
+            var currentState = board.squares[y][x];
 
             return currentState ? numberOfNeighbouringAliveSquares >= 2 && numberOfNeighbouringAliveSquares <= 3 : numberOfNeighbouringAliveSquares === 3;
         }

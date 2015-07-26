@@ -9,8 +9,8 @@
             var neighbouringSquareRetrieverMock;
             var factory;
 
-            var board = {squares: [[false]]};
-            var x = 0;
+            var board = {squares: [[false, false]]};
+            var x = 1;
             var y = 0;
 
             beforeEach(module('app', function ($provide) {
@@ -35,7 +35,7 @@
             describe('getNewAliveState', function () {
                 describe('currently alive', function () {
                     beforeEach(function () {
-                        board.squares[0][0] = true;
+                        board.squares[y][x] = true;
                     });
 
                     describe('0 active neighbours', function () {
@@ -167,7 +167,7 @@
 
                 describe('not currently alive', function () {
                     beforeEach(function () {
-                        board.squares[0][0] = false;
+                        board.squares[y][x] = false;
                     });
 
                     describe('0 active neighbours', function () {

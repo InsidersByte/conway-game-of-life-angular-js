@@ -1,5 +1,5 @@
 <div class="form-group text-center">
-    <button class="btn btn-primary" ng-click="vm.start()">Start New Game</button>
+    <button class="btn btn-primary" ng-click="vm.startNewGame()">Start New Game</button>
     &nbsp;
     <button class="btn btn-default">Resume</button>
     &nbsp;
@@ -8,7 +8,7 @@
 
 <table class="table-center">
     <tbody>
-        <tr ng-repeat="row in vm.board track by $index">
+        <tr ng-repeat="row in vm.game.board.squares track by $index">
             <td ng-repeat="cell in row track by $index" class="cell" ng-class="{ alive: cell }">
             </td>
         </tr>

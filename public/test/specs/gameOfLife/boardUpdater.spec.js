@@ -1,9 +1,6 @@
 /**
  * Created by Jon on 26/07/2015.
  */
-/**
- * Created by Jon on 26/07/2015.
- */
 (function () {
     'use strict';
 

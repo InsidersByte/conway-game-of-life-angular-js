@@ -6,7 +6,7 @@
 
     describe("app.gameOfLife", function () {
         describe("game factory", function () {
-            var randomBooleanGeneratorMock, $intervalMock, _Mock, boardCreatorMock, $intervalCancelMock;
+            var randomBooleanGeneratorMock, $intervalMock, _Mock, boardCreatorMock, $intervalCancelMock, boardUpdaterMock;
             var factory, $provide;
 
             var width = 2;
@@ -37,6 +37,10 @@
                 boardCreatorMock.create.and.returnValue(squares);
 
                 $provide.value('boardCreator', boardCreatorMock);
+
+                boardUpdaterMock = jasmine.createSpyObj('boardUpdater', ['update']);
+
+                $provide.value('boardUpdater', boardUpdaterMock);
             }));
 
             beforeEach(inject(function (game) {

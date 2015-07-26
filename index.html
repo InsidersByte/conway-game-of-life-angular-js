@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" href="public/vendor/bootstrap.css" />
+    <link rel="stylesheet" href="public/app.css" />
+    <base href="/">
+</head>
+<body ng-app="app">
+    <div ng-include="'public/app/layout/navbar.html'">
+    </div>
+
+    <div ui-view></div>
+
+    <script type="text/javascript" src="public/vendor/angular.js"></script>
+    <script type="text/javascript" src="public/vendor/angular-ui-router.js"></script>
+    <script type="text/javascript" src="public/vendor/underscore.js"></script>
+
+    <script type="text/javascript" src="public/app/app.module.js"></script>
+
+    <script type="text/javascript" src="public/app/core/core.module.js"></script>
+    <script type="text/javascript" src="public/app/core/constants.js"></script>
+
+    <script type="text/javascript" src="public/app/blocks/router/router.module.js"></script>
+    <script type="text/javascript" src="public/app/blocks/router/routerHelper.js"></script>
+
+    <script type="text/javascript" src="public/app/blocks/randomBooleanGenerator/randomBooleanGenerator.module.js"></script>
+    <script type="text/javascript" src="public/app/blocks/randomBooleanGenerator/randomBooleanGenerator.js"></script>
+
+    <script type="text/javascript" src="public/app/gameOfLife/gameOfLife.module.js"></script>
+    <script type="text/javascript" src="public/app/gameOfLife/gameOfLife.routes.js"></script>
+    <script type="text/javascript" src="public/app/gameOfLife/GameOfLife.js"></script>
+    <script type="text/javascript" src="public/app/gameOfLife/game.js"></script>
+    <script type="text/javascript" src="public/app/gameOfLife/boardCreator.js"></script>
+</body>
+</html>

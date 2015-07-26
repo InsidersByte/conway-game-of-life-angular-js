@@ -16,7 +16,7 @@
             {
                 state: 'gameOfLife',
                 config: {
-                    templateUrl: 'app/gameOfLife/gameOfLife.html',
+                    templateUrl: 'public/app/gameOfLife/gameOfLife.html',
                     url: '/',
                     controller: "GameOfLife",
                     controllerAs: 'vm'

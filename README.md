@@ -17,5 +17,5 @@ npm test
 
 To run the test as a single run you need to run.
 ```
-npm test-single-run
+npm run test-single-run
 ```

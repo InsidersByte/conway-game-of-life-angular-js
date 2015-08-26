@@ -6,7 +6,7 @@
 
     describe("app.gameOfLife", function () {
         describe("neighbouringSquareRetriever factory", function () {
-            var neighbouringSquareRetrieverMock;
+            var _Mock;
             var factory;
 
             var board = {squares: [[false, false]]};
@@ -14,8 +14,8 @@
             var y = 0;
 
             beforeEach(module('app', function ($provide) {
-                neighbouringSquareRetrieverMock = jasmine.createSpyObj('neighbouringSquareRetriever', ['getNeighbouringAliveSquares']);
-                $provide.value('neighbouringSquareRetriever', neighbouringSquareRetrieverMock);
+                _Mock = jasmine.createSpyObj('_', ['filter']);
+                $provide.constant('_', _Mock);
             }));
 
             beforeEach(inject(function (neighbouringSquareRetriever) {
